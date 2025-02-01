@@ -73,6 +73,7 @@ class DPlayBaseIE(InfoExtractor):
         disco_base = 'https://%s/' % disco_host
         headers = {
             'Referer': url,
+            'Content-Type': 'application/json'
         }
         self._update_disco_api_headers(headers, disco_base, display_id, realm)
         try:
@@ -358,8 +359,7 @@ class DiscoveryPlusBaseIE(DPlayBaseIE):
                 },
                 'videoId': video_id,
                 'wisteriaProperties': {
-                    'platform': 'desktop',
-                    'product': self._PRODUCT,
+                    'platform': 'desktop'
                 },
             }).encode('utf-8'))['data']['attributes']['streaming']
 
