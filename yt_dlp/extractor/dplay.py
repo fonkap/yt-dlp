@@ -341,15 +341,10 @@ class DiscoveryPlusBaseIE(DPlayBaseIE):
                     'drmSupported': False,
                 },
                 'videoId': video_id,
-<<<<<<< HEAD
                 'wisteriaProperties': {
                     'platform': 'desktop'
                 },
             }).encode('utf-8'))['data']['attributes']['streaming']
-=======
-                'wisteriaProperties': {},
-            }).encode())['data']['attributes']['streaming']
->>>>>>> master
 
     def _real_extract(self, url):
         return self._get_disco_api_info(url, self._match_id(url), **self._DISCO_API_PARAMS)
@@ -1297,7 +1292,10 @@ class DMaxIE(DiscoveryPlusBaseIE):
                     'filter[video.slug]': episode_sn
                 })
 
-            video_id = show['blocks'][0]['videoId']
+            video_id = next(
+                (block.get('videoId') for block in show.get('blocks', []) if 'videoId' in block),
+                None
+            )
             video = self._download_json(
                 disco_base + 'content/videos/' + video_id, display_id,
                 headers=headers, query={
