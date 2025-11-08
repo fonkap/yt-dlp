@@ -341,8 +341,15 @@ class DiscoveryPlusBaseIE(DPlayBaseIE):
                     'drmSupported': False,
                 },
                 'videoId': video_id,
+<<<<<<< HEAD
+                'wisteriaProperties': {
+                    'platform': 'desktop'
+                },
+            }).encode('utf-8'))['data']['attributes']['streaming']
+=======
                 'wisteriaProperties': {},
             }).encode())['data']['attributes']['streaming']
+>>>>>>> master
 
     def _real_extract(self, url):
         return self._get_disco_api_info(url, self._match_id(url), **self._DISCO_API_PARAMS)
@@ -1400,8 +1407,6 @@ class DMaxShowIE(DPlayBaseIE):
 
     _BASE_API = 'https://public.aurora.enhanced.live/'
     _DOMAIN = 'https://dmax.marca.com'
-    # _X_CLIENT = 'WEB:UNKNOWN:dplus-india:prod'
-    # _REALM = 'dplusindia'
     _INDEX = 4
     _VIDEO_IE = DMaxIE
 
