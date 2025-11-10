@@ -519,6 +519,8 @@ from .dplay import (
     DiscoveryPlusIndiaShowIE,
     DiscoveryPlusItalyIE,
     DiscoveryPlusItalyShowIE,
+    DMaxIE,
+    DMaxShowIE,
     DPlayIE,
     FoodNetworkIE,
     GoDiscoveryIE,
@@ -527,8 +529,6 @@ from .dplay import (
     InvestigationDiscoveryIE,
     ScienceChannelIE,
     TravelChannelIE,
-    DMaxIE,
-    DMaxShowIE,
 )
 from .drbonanza import DRBonanzaIE
 from .dreisat import DreiSatIE
