@@ -342,7 +342,7 @@ class DiscoveryPlusBaseIE(DPlayBaseIE):
                 },
                 'videoId': video_id,
                 'wisteriaProperties': {
-                    'platform': 'desktop'
+                    'platform': 'desktop',
                 },
             }).encode('utf-8'))['data']['attributes']['streaming']
 
@@ -1289,12 +1289,12 @@ class DMaxIE(DiscoveryPlusBaseIE):
                     'include': 'default',
                     'filter[environment]': 'dmaxspain',
                     'v': '2',
-                    'filter[video.slug]': episode_sn
+                    'filter[video.slug]': episode_sn,
                 })
 
             video_id = next(
                 (block.get('videoId') for block in show.get('blocks', []) if 'videoId' in block),
-                None
+                None,
             )
             video = self._download_json(
                 disco_base + 'content/videos/' + video_id, display_id,
@@ -1394,7 +1394,7 @@ class DMaxIE(DiscoveryPlusBaseIE):
         }
 
 class DMaxShowIE(DPlayBaseIE):
-    _VALID_URL = 'https://dmax.marca.com/series/(?P<show_name>[^/]+)/?(?:[?#]|$)',
+    _VALID_URL = 'https://dmax.marca.com/series/(?P<show_name>[^/]+)/?(?:[?#]|$)'
     _TESTS = [{
         'url': 'https://dmax.marca.com/series/curiosidades-de-la-tierra-espana',
         'playlist_mincount': 8,
